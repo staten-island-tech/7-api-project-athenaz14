@@ -161,10 +161,15 @@ def getWorld_News(news):
         print("Error fetching data!")
     data = response.json()
     return {
-        "latitude": data["name"],
-        "location_type": data["height"],
-        "longitude": data["weight"],
+        "latitude": data["latitude"],
+        "location_type": data["location_type"],
+        "longitude": data["longitude"],
         "name": data["name"],
-        "type": data ["type"]}
-new = getWorld_News("Embarcadero")
-print(new)
+        "type": data["type"]}
+find_name= False
+name = input("Enter the place where the name came from:")
+for data in getWorld_News:
+  if name == data["name"]:
+    find_name= True
+if find_name == True:
+  print()
