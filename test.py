@@ -156,20 +156,31 @@ for key, value in pokemon.items():
 import requests
 
 def getWorld_News(news):
-    response = requests.get ("https://venturebeat.com/2021/01/18/idera-acquires-api-developer-apilayer/{news.lower()}")
+    response = requests.get (f"https://venturebeat.com/2021/01/18/idera-acquires-api-developer-apilayer/")
     if response.status_code != 200:
         print("Error fetching data!")
+        return None
+    
     data = response.json()
     return {
+        "description": data["description"],
         "latitude": data["latitude"],
         "location_type": data["location_type"],
         "longitude": data["longitude"],
         "name": data["name"],
-        "type": data["type"]}
-find_name= False
+        "type": data["type"]
+    }
+
+new = getWorld_News("Dutch telecom company")
+print(new)
+
+"""
+data = getWorld_News()
 name = input("Enter the place where the name came from:")
-for news in data:
-  if name == news["name"]:
-    find_name= True
-if find_name == True:
-  print(news["latitude"])
+for new in data:
+  if name in new["name"]:
+    print(data["latitude"])
+    print(data["location_type"])
+    print(data["longitude"])
+    print(data["name"])
+    print(data["type"]) """
