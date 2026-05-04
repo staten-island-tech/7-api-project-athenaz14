@@ -168,8 +168,8 @@ def getWorld_News(news):
         "type": data["type"]}
 find_name= False
 name = input("Enter the place where the name came from:")
-for data in getWorld_News:
-  if name == data["name"]:
+for news in data:
+  if name == news["name"]:
     find_name= True
 if find_name == True:
-  print()
+  print(news["latitude"])
