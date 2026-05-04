@@ -159,25 +159,12 @@ def getWorld_News(news):
     response = requests.get ("https://venturebeat.com/2021/01/18/idera-acquires-api-developer-apilayer/{news.lower()}")
     if response.status_code != 200:
         print("Error fetching data!")
-        return None
-
     data = response.json()
     return {
         "latitude": data["name"],
         "location_type": data["height"],
         "longitude": data["weight"],
         "name": data["name"],
-        "type": data ["type"]
-    }
-"entities" == getWorld_News("Embarcadero")
-print(getWorld_News)
-
-for key, value in "entities".items():
-    print(f"{key.title()}: {value}")
-
-data = getWorld_News()
-name = input("Enter the name of where of where the news article came from:")
-type = input("Enter the type of the news article:")
-for name in data:
-    if name["name"] in data:
-        
+        "type": data ["type"]}
+new = getWorld_News("Embarcadero")
+print(new)
