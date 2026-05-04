@@ -169,11 +169,15 @@ def getWorld_News(news):
         "name": data["name"],
         "type": data ["type"]
     }
-"entities" == getWorld_News("American social media and technology company")
+"entities" == getWorld_News("Embarcadero")
 print(getWorld_News)
+
 for key, value in "entities".items():
     print(f"{key.title()}: {value}")
+
 data = getWorld_News()
-
-
-
+name = input("Enter the name of where of where the news article came from:")
+type = input("Enter the type of the news article:")
+for name in data:
+    if name["name"] in data:
+        
