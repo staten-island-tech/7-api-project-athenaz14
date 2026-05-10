@@ -1,17 +1,17 @@
 import requests
-def getholiday(holi):
-    response = requests.get(f"https://holidayapi.com/v1/holidays?pretty&key=3fea9852-6653-49c3-94f0-ed12cddbac0f&country=US&year=2025")
+
+def getMatch(chess):
+    response = requests.get(f"https://api.chess.com/pub/player/erik/matches{chess.lower()}")
     if response.status_code != 200:
         print("Error fetching data!")
         return None
-    data = response.json()
     
-    print(data["name"])
+    data = response.json()
+    return { 
+        "name" : data["name"],
+        "played_as_white" : data["played_as_white"],
+        "played_as_black" : data["played_as_black"]
+    }
+player = getMatch("1st TOC. Bishop Div/R3:TeamUSA vs Netherlands")
+print(player)
 
-    return []
-""" 
-            "name": data["name"],
-            "date": data["date"],
-            "observed": data["observed"],
-            "public": data["public"],
-            "country": data["country"] """
