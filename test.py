@@ -1,17 +1,24 @@
 import requests
-
+url = "https://api.chess.com/pub/player/124chess"
 def getMatch(chess):
-    response = requests.get(f"https://api.chess.com/pub/player/erik/matches{chess.lower()}")
+    response = requests.get(url)
     if response.status_code != 200:
         print("Error fetching data!")
         return None
     
     data = response.json()
-    return { 
+    return {
+
+        "avatar" : data["avatar"],
+        "player_id" : data["player_id"],
+        "@id" : data["@id"],
+        "url" : data["https://www.chess.com/member/124chess"],
         "name" : data["name"],
-        "played_as_white" : data["played_as_white"],
-        "played_as_black" : data["played_as_black"]
+        "title" : data["title"],
+
     }
-player = getMatch("1st TOC. Bishop Div/R3:TeamUSA vs Netherlands")
-print(player)
+user_input = input("Learn more about chess player: 124chess(options are avatar, player_id, @id, url, name, title)")
+if user_input == "avatar":
+    print(data["avatar"])
+
 
